@@ -20,8 +20,10 @@ exports.getCategories = async (req, res) => {
 };
 
 exports.updateCategories = async (req, res) => {
+    console.log(req.body);
     try {
         const {categoryId} = req.params;
+        console.log("categoryId", categoryId);
         await Category.update({name :req.body.name}, {where: {id: categoryId}});
         res.json({message: 'Category updated'});
         
@@ -33,14 +35,8 @@ exports.updateCategories = async (req, res) => {
 exports.deleteCategory = async (req, res) => {
     try {
         const {categoryId} = req.params;
-        const category = await Category.findByPk(categoryId,{include: 'Service'});
-        if(!category || category.Services.length > 0){
-            return res.status(400).json({message: 'Category cannot be deleted'});
-        }
         await Category.destroy({where: {id: categoryId}});
-        res.json({message: 'Category deleted'});
-        
-        
+        res.json({message: 'Category deleted'});        
     } catch (error) {
         res.status(500).json({message: error.message});
     }

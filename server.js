@@ -3,6 +3,7 @@
  const sequelize = require('./config/db');
  const authRoutes = require('./routes/auth.routes');
  const categoryRoutes = require('./routes/category.routes');
+ const serviceRoutes = require('./routes/service.routes');
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 
 app.use("/api", authRoutes);
 app.use("/api", categoryRoutes);
+app.use("/api",serviceRoutes);
 
 sequelize.sync().then(() => {
   console.log('Database & tables created!');

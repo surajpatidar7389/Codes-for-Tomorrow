@@ -1,7 +1,7 @@
 const express = require('express');
 const {verifyToken} = require('../middleware/auth.middleware');
-const {createCategory, getCategories, getCategoryById, updateCategories, deleteCategory} = require('../controllers/category.controller');
-"../controllers/category.controller";
+const {createCategory, getCategories, updateCategories, deleteCategory} = require('../controllers/category.controller');
+// "../controllers/category.controller";
 
 const router = express.Router();
 
